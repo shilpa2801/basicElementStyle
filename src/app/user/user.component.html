@@ -1,0 +1,18 @@
+<div class="col-lg-6">
+<input type="text" class="form-control" name="username" [(ngModel)]="username">
+<!--Property binding on directive, [] bind some property on directive-->
+<!--<p [ngClass]="{online : userstatus === 'is online' }" [ngStyle]="{backgroundColor: getColor()}" *ngIf="useradd; else nouser">{{displayName}} </p>-->
+<div *ngFor="let user of usersArray" >
+	<p 
+	  [ngStyle]="{backgroundColor: user.color}" 
+	  [ngClass]="{online : user.status === 'is online'}" >{{user.username}} {{user.status}}
+
+	</p>
+</div>
+<p *ngIf="useradd; else nouser"></p>
+<ng-template #nouser>
+	<p>No User Added</p>
+</ng-template>
+<button class="btn btn-success" [disabled]="!username" (click)="addUserName()">Add Username</button>
+<button class="btn btn-success" [disabled]="!username" (click)="reset()">Reset</button>
+</div>
